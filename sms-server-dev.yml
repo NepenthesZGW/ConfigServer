@@ -1,0 +1,36 @@
+server:
+  port: 8888
+  
+spring:
+  application:
+    name: gateway
+  zipkin:
+    base-url: http://localhost:9411/  
+  cloud:
+    config:
+      discovery:
+        service-id: config-server
+      profile: qa  
+zuul:
+  routes:
+    server-test: /gate-way/st/**
+    api-consumer: /gate-way/ac/**   
+#  ignored-services:
+#  - api-consumer
+#  - server-test
+#  ignored-patterns:
+#  - /*xxx/**
+  sensitive-headers:
+    
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7901/eureka/
+      
+      
+      
+ 
+logging:
+  level:
+    org.springframework: DEBUG 
+              
